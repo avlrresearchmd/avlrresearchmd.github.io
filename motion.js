@@ -64,11 +64,11 @@
   },{threshold:0.1});
   visibilityObserver.observe(document.getElementById('lip-illustration'));
   const wordSlider=document.getElementById('word-progress'),wordButton=document.getElementById('play-word'),wordImage=document.getElementById('word-active'),wordOutput=document.getElementById('word-frame');
-  const base=wordImage.getAttribute('src').replace(/nobboi-\d+\.png$/,'');
-  const frames=Array.from({length:18},(_,i)=>`${base}nobboi-${String(i+54).padStart(4,'0')}.png`);
+  const base=wordImage.getAttribute('src').replace(/s319-tinixo-\d+\.png$/,'');
+  const frames=Array.from({length:23},(_,i)=>`${base}s319-tinixo-${String(i+59).padStart(4,'0')}.png`);
   let timer=null;
   function stopWord(){if(timer!==null)clearInterval(timer);timer=null;wordButton.textContent='Play sequence';}
-  function showFrame(index){wordSlider.value=String(index);wordImage.src=frames[index];const number=String(index+54).padStart(4,'0');wordImage.alt=`Nobboi, original frame ${number}`;wordOutput.textContent=`Frame ${number} · ${index+1} of 18`;wordSlider.setAttribute('aria-valuetext',`Frame ${number}, ${index+1} of 18`);document.querySelectorAll('.keyframe').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.frame)===index)));}
+  function showFrame(index){wordSlider.value=String(index);wordImage.src=frames[index];const number=String(index+59).padStart(4,'0');wordImage.alt=`Tinixo, original frame ${number}`;wordOutput.textContent=`Frame ${number} · ${index+1} of 23`;wordSlider.setAttribute('aria-valuetext',`Frame ${number}, ${index+1} of 23`);document.querySelectorAll('.keyframe').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.frame)===index)));}
   wordSlider.addEventListener('input',()=>{stopWord();showFrame(Number(wordSlider.value));});
   document.querySelectorAll('.keyframe').forEach(b=>b.addEventListener('click',()=>{stopWord();showFrame(Number(b.dataset.frame));}));
   let preloaded=false;
